@@ -84,6 +84,7 @@ const main = () => {
   addEdge(graph, 'E', 'F', 5)
   
   const result = dijkstra(graph, 'A')
+  console.log(graph)
   console.log('Distances:', Object.fromEntries(result.distances))
   console.log('Path to F:', result.getPath('E'))
 }
