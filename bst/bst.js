@@ -1,6 +1,5 @@
 import * as R from "ramda"
 import crypto from "node:crypto"
-import { count } from "node:console";
 
 const shuffleArray = (ar) => {
   let arr = ar.slice(0)
@@ -124,7 +123,7 @@ const BinarySearchTree = (() => {
       count
     
     }
-    
+
   })()
   
   // Example usage
