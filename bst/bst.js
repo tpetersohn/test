@@ -1,5 +1,6 @@
 import * as R from "ramda"
 import crypto from "node:crypto"
+import { count } from "node:console";
 
 const shuffleArray = (ar) => {
   let arr = ar.slice(0)
@@ -101,9 +102,16 @@ const BinarySearchTree = (() => {
         height(tree.right)
       )
     }
-  
+    const count = tree => {
+
+      if (!tree) return 0
+      return 1 + count(tree.left) + count(tree.right)
+
+    }
+
     // Public API
     return {
+
       create: () => null,
       insert,
       search,
@@ -112,8 +120,11 @@ const BinarySearchTree = (() => {
       findMin,
       findMax,
       height,
-      reverse
+      reverse,
+      count
+    
     }
+    
   })()
   
   // Example usage
@@ -122,9 +133,9 @@ const BinarySearchTree = (() => {
   const tre = R.reduce( (acc, val) => BinarySearchTree.remove(acc)(val), tree, [1,2,3] )
   console.log(arr)
   console.log(BinarySearchTree.inorderTraversal(tre)) // [1, 3, 5, 7]
-  const rtree = BinarySearchTree.reverse(tree)
+  const rtree = BinarySearchTree.reverse(tre)
   console.log(BinarySearchTree.inorderTraversal(rtree))
-  console.log(tre.value)
+  console.log(BinarySearchTree.count(tree))
   console.log(BinarySearchTree.search(rtree)(15)) // Node with value 3
   console.log(BinarySearchTree.search(tre)(5))
   console.log(BinarySearchTree.height(tre)) // 2
