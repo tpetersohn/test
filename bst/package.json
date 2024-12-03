@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "ramda": "^0.30.1"
+  },
+  "type": "module"
+
+}
