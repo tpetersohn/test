@@ -2,7 +2,9 @@
 const createGraph = () => new Map()
 
 // Add edge to graph
-const addEdge = (graph, start, end, weight) => graph.set(start, [...(graph.get(start) || []), { node: end, weight }])
+const addEdge = (graph, start, end, weight) => (  graph.set(start,  [...(graph.get(start) || []), { node: end, weight }   || []]), 
+                                                  graph.set(end,    [...(graph.get(end)   || []), { node: start, weight } || []])
+                                               )
 
 // Priority Queue implementation using Min-Heap concept
 const PriorityQueue = (() => {
@@ -97,13 +99,15 @@ const main = () => {
   addEdge(graph, 'D', 'E', 3)
   addEdge(graph, 'D', 'F', 1)
   addEdge(graph, 'E', 'F', 5)
+  addEdge(graph, "A", "K", 20)
+  addEdge(graph, "K")
   
-  const result = dijkstra(graph, 'A')
+  const result = dijkstra(graph, 'F')
 
-  console.log(graph.get('A'))
+  console.log(graph.get('F'))
   console.log(graph.keys())
   console.log('Distances:', Object.fromEntries(result.distances))
-  console.log('Path to F:', result.getPath('E'))
+  console.log('Path to F:', result.getPath('K'))
 
 }
 
